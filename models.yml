@@ -1,0 +1,272 @@
+#############################################
+#                                           #
+#                   shop                    #
+#                                           #
+#############################################
+offers:                 Array(Offer)
+orders:                 Array(Order)
+new_order:
+  need_shipping:        Boolean 
+  address:              String
+  offer:                Object(Offer)
+total_count:            Number
+filter:   
+  beach:    
+    id:                 Number
+    name:               String
+  island:   
+    id:                 Number
+    name:               String
+  bike:   
+    id:                 Number
+    name:               String
+  brand:    
+    id:                 Number
+    name:               String
+  date_from:            Date
+  date_to:              Date
+  year_from:            2000-2019
+  year_to:              2000-2019
+  akp:                  Boolean
+  abs:                  Boolean
+  esp:                  Boolean
+  deposit:              Boolean
+  shipping:             Boolean
+  cheap_first:          Boolean
+  is_favourite:         Boolean
+current_owner:    
+  id:                   Number
+  email:                String
+  name:                 String
+  photo:                String
+  address:              String
+  phone:                String
+##################################### actions
+details(Offer):   
+  days:                 Number
+  price_per_day:        Number
+  total_price:          Number
+getMore():              null
+preview(Offer):         null
+  days:                 Number
+  pricePerDay:          Number
+  totalPrice:           Number
+changeLike(Offer):      null
+book(Order):            null
+cancel(order):      null
+
+#############################################
+#                                           #
+#               Offer (inner)               #
+#                                           #
+#############################################
+  - images:
+      - id:             Number
+      - url:            String
+  - beach:  
+      id:               Number
+      name:             String
+  - island: 
+      id:               Number
+      name:             String
+  - bike: 
+      id:               Number
+      name:             String
+  - brand:      
+      id:               Number
+      name:             String
+  - volume:             Number
+  - year:               2000-2019
+  - abs:                Bool
+  - esp:                Bool
+  - akp:                Bool
+  - deposit:            Number
+  - color:              Object(Color)
+  - number:             String
+  - is_active:          Bool
+  - shipping:           Bool
+  - prices:   
+      - days:           Nubmer
+      - price:          Number
+  - description:        String
+  - date_added:         Date
+  - owner:    
+      - id:             Number
+      - name:           String 
+      - photo:          String   
+      - address:        String     
+      - email:          String   
+      - phone:          String
+##################################### actions
+changeOrder():          null
+addNewPrice():          null
+removePrice(price):     null
+addImage():             null
+removeImage(img):       null
+
+#############################################
+#                                           #
+#               Order (inner)               #
+#                                           #
+#############################################
+- status:             booked / commited / canceled
+- date_start:         Date
+- date_end:           Date
+- offer:  
+    images:
+          - id:       Number
+          - url:      String  
+    bike.name:        String
+    brand.name:       String
+    volume:           Number
+    color.name:       String
+    year:             Number
+    akp:              Bool
+    esp:              Bool
+    abs:              Bool
+    deposit:          Number
+    number:           String
+    is_favourite:     Bool
+    owner:
+      id:             Number
+      name:           String
+user:
+    email:            String
+    name:             String
+    photo:            String
+    address:          String
+    phone:            String
+- address:            String
+- need_shipping:      String
+- days:               Number
+- price:              Number
+- total_price:        Number
+##################################### actions
+cancel(order):        null
+commit(order):        null
+
+
+#############################################
+#                                           #
+#                   user                    #
+#                                           #
+#############################################
+email:              String
+name:               String
+photo:              String
+address:            String
+phone:              String
+role:               owner / tourist / unreg
+has_password:       Bool
+tmp:
+  password:         String
+  new_password:     String
+  repeat_password:  String
+  agree:            Bool
+  remember:         Bool
+  is_owner:         Bool
+  msg:
+    type:           text / image
+    body:           String
+chats:
+  - user:
+      id:           Number
+      name:         String
+      photo:        String
+  - messages:
+      - read:       Bool
+      - type:       text / image
+      - body:       String
+      - from:       tourist / owner
+      - datetime:   Datetime
+current_chat:       chats[i] / null
+##################################### actions
+login():                      null
+registration():               null
+loginG():                     null
+loginF():                     null
+logout():                     null
+updatePassword():             null
+updateInfo():                 null
+sendMessage():                null
+unreadCountMessages(message): Number
+uploadFile():                 null
+isMyMessage(message):         Bool
+
+#############################################
+#                                           #
+#               collections                 #
+#                                           #
+#############################################
+
+islands:
+  - id
+  - name
+
+beaches:            [null]
+  - id
+  - name
+
+brands:
+  - id
+  - name
+
+bikes:              [null]
+  - id
+  - name
+
+colors:
+  - id
+  - name
+##################################### actions
+
+
+#############################################
+#                                           #
+#                  garage                   #
+#                                           #
+#############################################
+offers:             Array(Offer)
+orders:             Array(Order)
+total_offers:       Number
+total_orders:       Number
+##################################### actions
+changeOrder():      null
+updateOffers():     null
+addNewPrice():      null
+removePrice(price): null
+addImage():         null
+removeImage(img):   null
+cancel(order):      null
+commit(order):      null
+
+
+
+1. Как выглядит страничка /orders для туриста,
+во время путешествия, после путешествия.
+2. Турист может отменить ордер в любое время,
+если а) ордер не подтвержден и б) подтвержден,
+но текущая дата меньше меньше даты начала ордера
+3. Овнер может отменить ордер в любой момент
+4. Пока не пишем «будет сдан завтра» или 
+вернут «через 2 дня», пока сайт не будет готов
+полностью. Пока отображается только дата.
+5. Как список предложений определенного овнера
+(/owner/:id) зависит от настроек фльтра, которые
+установил юзер на главной? Получается, что учитываем
+только дату от и до и показываем карточку точно
+такую же как и на главной странице?
+6. Что отображается в карточке оффера на месте 
+цены, когда даты не указаны?
+7. На странице с ордерами у овнера разные категории
+«ожидают», «подтверждены» и прочее. Когда он меняет
+состояние, заказы сразу перебрасываются в другую
+категорию или как это происходит?
+8. Пользователь нажимает «забронировать» показывается
+превьюшка ордера, подтверждает и что происходит?
+9. Нужно ли какое-либо оповещение овнеру, когда
+турист сделал заказ или написал ему сообщение?
+А если овнер не на сайте сейчас?
+10. Как отображать favorites, если пользователь
+сразу перешел на эту стрницу, не выбирая ранее
+ничего в фильтре? (цен получается, что нет)

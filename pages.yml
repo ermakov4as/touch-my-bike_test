@@ -1,0 +1,414 @@
+#############################################
+#                                           #
+#                0. (burger)                #
+#                                           #
+#############################################
+user:
+  logout():           null
+  role:               owner / tourist / unreg
+  
+toggle:
+  login:              show
+  burger:             hide
+  links:
+    - /offers
+    - /orders
+    - /profile
+    - /favorites
+    - /login
+
+#############################################
+#                                           #
+#                0. (login)                 #
+#                                           #
+#############################################
+user:
+  email:              String
+  tmp:    
+    password:         String
+    remember:         Boolean
+  login():            null
+  loginF():           null
+  loginG():           null
+# toggle
+
+toggle:
+  registration:       show
+  login:              hide
+
+#############################################
+#                                           #
+#             0. (registration)             #
+#                                           #
+#############################################
+user:
+  email:              String
+  tmp:    
+    agree:            Boolean
+    is_owner:         Boolean
+  registration():     null
+  loginF():           null
+  loginG():           null
+
+#############################################
+#                                           #
+#            0. (preview-order)             #
+#                                           #
+#############################################
+shop:
+  filter:
+    date_from:        Date
+    date_to:          Date
+  preview(Offer):
+    days:             Number
+    pricePerDay:      Number
+    totalPrice:       Number
+  new_order:
+    need_shipping:    Boolean 
+    address:          String
+    offer:
+      bike.name:      String
+      brand.name:     String
+      images[0].url:  String
+  book(Order):        null
+
+toggle:
+  preview:            hide
+
+#############################################
+#                                           #
+#             0. (order-card)               #
+#                                           #
+#############################################
+offer:
+  images:
+    - id:                 Number
+    - url:                String
+  bike.name:              String
+  brand.name:             String
+  volume:                 Number
+  color.name:             String
+  year:                   Number
+  abs:                    Bool
+  esp:                    Bool
+  akp:                    Bool
+  deposit:                Number
+  shipping:               Bool
+  number:                 String
+  is_favourite:           Bool
+  island.name:            String
+  beach.name:             String
+  owner:      
+    id:                   Number
+    name:                 String
+
+shop:     
+  details(Offer):     
+    price_per_day:        Number
+    total_price:          Number
+# toggles     
+shop:     
+  preview(Offer):         null
+  changeLike(Offer):      null
+  
+#############################################
+#                                           #
+#               1.  / (main)                #
+#                                           #
+#############################################
+collections:
+  islands:
+    - id
+    - name
+  beaches:            [null]
+    - id
+    - name
+  brands:
+    - id
+    - name
+  bikes:              [null]
+    - id
+    - name
+
+shop:
+  total_count:        Number(computed)
+  offers:             Array(offer)
+  filter:
+    island:           Object
+    beach:            Object
+    brand:            Object
+    bike:             Object
+    date_from:        Date
+    date_to:          Date
+    year_from:        2000-2019
+    year_to:          2000-2019
+    akp:              Boolean
+    abs:              Boolean
+    esp:              Boolean
+    no_deposit:       Boolean
+    shipping:         Boolean
+    cheap_first:      Boolean
+  showMore():         null
+  updateOffers():     null
+  preview(Offer):     null
+  changeLike(Offer):  null
+
+toggle:
+  filter:             show/hide
+
+#############################################
+#                                           #
+#                3. /offers                 #
+#                                           #
+#############################################
+garage:
+  offers:
+    - images[0].url:                    String
+    - bike:
+        id:                             Number[null]
+        name:                           String[null]
+    - brand:
+        id:                             Number[null]
+        name:                           String[null]
+    - volume:                           Number
+    - year:                             Number
+    - abs:                              Bool
+    - esp:                              Bool
+    - akp:                              Bool
+    - deposit:                          Number
+    - color:                            Object(Color)
+    - is_active:                        Bool
+    - shipping:                         Bool
+    - prices[prices.length-1].price:    Number     
+    - island:                           Object(Island)
+    - beach:                            Object(Beach)
+  changeOrder():                        null
+  updateOffers():                       null
+
+#############################################
+#                                           #
+#   4. /offers/new + 6. /offers/:id/edit    #
+#                                           #
+#############################################
+garage:
+  current_offer:
+    images:
+      - id:           Number
+      - url:          String
+    bike:
+      id:              Number[null]
+      name:            String[null]
+    volume:           Number
+    year:             Number
+    color:            Object(Color)
+    abs:              Bool
+    esp:              Bool
+    akp:              Bool
+    deposit:          Number
+    number:           String
+    is_active:        Bool
+    shipping:         Bool
+    prices:
+      - days:         Nubmer
+      - price:        Number
+    island:           Object(Island)
+    beach:            Object(Beach)
+    description:      String
+  addNewPrice():      null
+  removePrice(price): null
+  addImage():         null
+  removeImage(img):   null
+
+#############################################
+#                                           #
+#              5. /offers/:id               #
+#                                           #
+#############################################
+garage:
+  current_offer:
+    images:
+      - id:           Number
+      - url:          String
+    bike:
+      id:              Number[null]
+      name:            String[null]
+    volume:           Number
+    year:             Number
+    color:            Object(Color)
+    abs:              Bool
+    esp:              Bool
+    akp:              Bool
+    deposit:          Number
+    number:           String
+    is_active:        Bool
+    shipping:         Bool
+    prices:
+      - days:         Nubmer
+      - price:        Number
+    island:           Object(Island)
+    beach:            Object(Beach)
+    description:      String
+
+
+#############################################
+#                                           #
+#              2. /profile                  #
+#                                           #
+#############################################
+user:
+  email:              String
+  name:               String
+  photo:              String
+  address:            String
+  phone:              String
+  has_password:       Bool
+  tmp:
+    password:         String
+    new_password:     String
+    repeat_password:  String
+##################################### actions
+user:
+  updatePassword():   null
+  updateInfo():       null
+
+#############################################
+#                                           #
+#               7.  /owner/:id              #
+#                                           #
+#############################################
+
+shop:
+  offers:             Array(offer)
+  filter: 
+    cheap_first:      Boolean
+  changeLike(Offer):  null
+##################################### actions
+details(Offer): 
+  days:               Number
+  price_per_day:      Number
+  total_price:        Number
+current_owner:  
+  id:                 Number
+  email:              String
+  name:               String
+  photo:              String
+  address:            String
+  phone:              String
+
+#############################################
+#                                           #
+#               8.  /favorites              #
+#                                           #
+#############################################
+
+shop:
+  offers:             Array(offer)
+  filter:
+    cheap_first:      Boolean
+  changeLike(Offer):  null
+##################################### actions
+details(Offer):
+  days:               Number
+  price_per_day:      Number
+  total_price:        Number
+
+
+#############################################
+#                                           #
+#               9.  /orders                 #
+#                                           #
+#############################################
+garage:
+  total_orders:           Number
+  orders:
+    - status:             booked / commited / canceled
+    - date_start:         Date
+    - date_end:           Date
+    - offer:  
+        images:
+              - id:       Number
+              - url:      String  
+        bike.name:        String
+        brand.name:       String
+        volume:           Number
+        color.name:       String
+        year:             Number
+        akp:              Bool
+        esp:              Bool
+        abs:              Bool
+        deposit:          Number
+        number:           String
+        island.name:      String
+        beach.id:         String
+    - address:            String
+    - need_shipping:      String
+    - days:               Number
+    - price:              Number
+    - total_price:        Number
+    - user:
+        name:             String
+        phone:            String
+shop:
+  orders:
+    - status:             booked / commited / canceled
+    - date_start:         Date
+    - date_end:           Date
+    - offer:  
+        images:
+            - id:         Number
+            - url:        String  
+        bike.name:        String
+        brand.name:       String
+        volume:           Number
+        color.name:       String
+        year:             Number
+        akp:              Bool
+        esp:              Bool
+        abs:              Bool
+        deposit:          Number
+        number:           String
+        is_favourite:     Bool
+        owner:
+          id:             Number
+          name:           String
+        island.name:      String
+        beach.id:         String
+    - address:            String
+    - need_shipping:      String
+    - days:               Number
+    - price:              Number
+    - total_price:        Number
+##################################### actions
+garage:
+  cancel(order):      null
+  commit(order):      null
+shop:
+  changeLike(Offer):  null 
+  cancel(order):      null 
+
+#############################################
+#                                           #
+#              10. /chat/:id                #
+#                                           #
+#############################################
+user:
+  tmp:
+    is_owner:         Bool
+    msg:
+      type:           text / image
+      body:           String
+  chats:
+    - user:
+        id:           Number
+        name:         String
+        photo:        String
+    - messages:
+        - read:       Bool
+        - type:       text / image
+        - body:       String
+        - from:       tourist / owner
+        - datetime:   Datetime
+  ##################################### actions
+  sendMessage(id, type, body):  null
+  unreadCountMessages(message): Number
+  uploadFile():                 null
