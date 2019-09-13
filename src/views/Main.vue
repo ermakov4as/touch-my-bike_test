@@ -1,22 +1,18 @@
 <template>
   <div>
+    <button @click="display.burger = !display.burger">Меню</button>
+    <Burger></Burger>
     <div style="background-color: #c9ffc8;">
       <h3>
         User
-        <button v-if="user.role !== 'unreg'" @click="user.logout">logout</button>
+        <button v-if="user.role !== 'unreg'" @click="user.logout">Выход</button>
       </h3>
-      <button @click="display.login = true">Login</button>
-      <button @click="display.registration = true">Registration</button>
-      <button @click="user.loginF()">F</button>
-      <button @click="user.loginG()">G</button>
-      <div v-if="display.registration">
-        <h3>
-          login form registration
-          <button @click="display.registration = false">X</button>
-        </h3>
-        <input v-model="user.email" placeholder="email (try «owner»)" />
-        <button @click="user.registration()">зарегистрироваться</button>
-      </div>
+      <template v-if="user.role === 'unreg'">
+        <button @click="display.login = true">Вход</button>
+        <button @click="display.registration = true">Регистрация</button>
+      </template>
+      <Login></Login>
+      <Registration></Registration>
       <div>{{user}}</div>
     </div>
     <div style="background-color: rgb(255, 200, 225);">
@@ -175,9 +171,17 @@
 
 <script>
 import Datepicker from 'vuejs-datepicker'
+import Login from '@/components/Login'
+import Registration from '@/components/Registration'
+import Burger from '@/components/Burger'
 
 export default {
-  components: { Datepicker },
+  components: { 
+    Datepicker,
+    Login,
+    Registration,
+    Burger
+  },
   created() {
     this.collections.init()
     this.shop.updateOffers()

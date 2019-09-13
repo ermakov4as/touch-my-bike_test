@@ -42,6 +42,10 @@ import EditOffer from '@/views/Offers/EditOffer'
 pages[ROLES.OWNER].push('Offers', 'ShowOffer', 'NewOffer', 'EditOffer')
 pages[ROLES.TOURIST].push('ShowOffer')
 
+import Profile from '@/views/Profile'
+pages[ROLES.OWNER].push('Profile')
+pages[ROLES.TOURIST].push('Profile')
+
 import { User } from '@/models'
 
 Vue.use(Router)
@@ -59,6 +63,7 @@ const router = new Router({
     { path: '/offers/new', name: 'NewOffer', component: NewOffer }, // owner
     { path: '/offers/:id', name: 'ShowOffer', component: ShowOffer }, // tourist + owner
     { path: '/offers/:id/edit', name: 'EditOffer', component: EditOffer }, // owner
+    { path: '/profile', name: 'Profile', component: Profile }, // tourist + owner
     // { path: '/orders', name: 'Orders', component: Orders }
     // { path: '/', name: 'main', component: Main },
     // { path: '/login', name: 'login', component: Login },

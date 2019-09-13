@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <Login></Login>
     <div v-if="$devMode">
       <div v-for="(role, i) of Object.keys(pages)" :key="i">
         {{role}}:
@@ -17,10 +16,8 @@
 
 <script>
 import { pages } from '@/router'
-import Login from '@/components/Login'
 
 export default {
-  components: { Login },
   data() {
     return {
       pages: pages
