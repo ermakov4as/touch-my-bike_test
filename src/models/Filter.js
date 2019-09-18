@@ -14,7 +14,7 @@ export default new Proxy(
     akp: false,
     abs: false,
     esp: false,
-    deposit: false,
+    no_deposit: false,
     shipping: false,
     cheapFirst: true,
     oldFirst: false,

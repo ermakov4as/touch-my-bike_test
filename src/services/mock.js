@@ -125,14 +125,14 @@ export default {
   emptyOffer: () => {
     return newOffer()
   },
+  emptyOrder: () => {
+    return newOrder()
+  },
   newImage: (imagesLength) => {
     return {
       id: imagesLength + 1,
       url: Vue.faker().image.transport()
     }
-  },
-  resultPriceExample() {
-    return Math.floor((Math.random() * 1000) % 300) * 10 + 1000
   }
 }
 
@@ -185,6 +185,7 @@ function example() {
     ][Math.floor(Math.random() * 10) % 2],
     number: 'WA303X',
     is_active: true,
+    is_favourite: false,
     shipping: !!(Math.floor(Math.random() * 10) % 2),
     prices: [
       {
@@ -232,7 +233,24 @@ function example() {
         name: 'Sana ba bi4'
       }
     ][Math.floor(Math.random() * 10) % 3],
-    description: Vue.faker().lorem.paragraph()
+    description: Vue.faker().lorem.paragraph(),
+    owner: [
+      {    
+        id: 1,
+        name: 'Alex',
+        phone: '+7 (111) 123-45-67' 
+      },
+      {    
+        id: 2,
+        name: 'Sergey',
+        phone: '+1 (000) 000-00-00' 
+      },
+      {    
+        id: 3,
+        name: 'John',
+        phone: '+3 (222) 999-99-99'
+      }
+    ][Math.floor(Math.random() * 10) % 3]
   }
 }
 
@@ -250,6 +268,7 @@ function newOffer() {
     color: null,
     number: null,
     is_active: false,
+    is_favourite: false,
     shipping: false,
     prices: [
       {
@@ -259,6 +278,24 @@ function newOffer() {
     ],
     island: null,
     beach: null,
-    description: null
+    description: null,
+    owner: {    
+      id: null,
+      name: null, 
+      photo: null,   
+      address: null,     
+      email: null,   
+      phone: null
+    }
+  }
+}
+
+function newOrder() {
+  return {
+    offer: null,
+    date_from: null,
+    date_to: null,
+    need_shipping: false,
+    adress: null
   }
 }

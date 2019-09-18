@@ -1,7 +1,6 @@
 import User from './User'
 
 export default {
-  filter: false,
   get login() {
     return this.__login
   },
@@ -24,7 +23,14 @@ export default {
   set burger(val) {
     this.__burger = val
   },
+  get filters() {
+    return this.__filters
+  },
+  set filters(val) {
+    this.__filters = val
+  },
   __login: false,
   __registration: false,
-  __burger: false
+  __burger: false,
+  __filters: true
 }

@@ -43,8 +43,9 @@ pages[ROLES.OWNER].push('Offers', 'ShowOffer', 'NewOffer', 'EditOffer')
 pages[ROLES.TOURIST].push('ShowOffer')
 
 import Profile from '@/views/Profile'
-pages[ROLES.OWNER].push('Profile')
-pages[ROLES.TOURIST].push('Profile')
+import Chat from '@/views/Chat'
+pages[ROLES.OWNER].push('Profile', 'Chat')
+pages[ROLES.TOURIST].push('Profile', 'Chat')
 
 import { User } from '@/models'
 
@@ -64,6 +65,7 @@ const router = new Router({
     { path: '/offers/:id', name: 'ShowOffer', component: ShowOffer }, // tourist + owner
     { path: '/offers/:id/edit', name: 'EditOffer', component: EditOffer }, // owner
     { path: '/profile', name: 'Profile', component: Profile }, // tourist + owner
+    { path: '/chat/:id', name: 'Chat', component: Chat }, // tourist + owner
     // { path: '/orders', name: 'Orders', component: Orders }
     // { path: '/', name: 'main', component: Main },
     // { path: '/login', name: 'login', component: Login },

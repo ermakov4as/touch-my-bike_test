@@ -22,6 +22,7 @@
       <div>Пляж: {{ garage.currentOffer.beach.name }}</div>
       <div v-if="garage.currentOffer.shipping">Доставка есть</div>
       <div v-else>Доставки нет</div>
+      <div>Номерной знак: {{ garage.currentOffer.number }}</div>
       <div>Стоимость: от {{ garage.currentOffer.prices[garage.currentOffer.prices.length - 1].price }} ТНВ/сутки</div>
       <div v-for="(price, index) of garage.currentOffer.prices" :key="price.days * (-1)" style="margin-left: 10px;">
         <span>От {{ price.days }}</span>
