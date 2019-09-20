@@ -16,9 +16,9 @@ export default new Proxy(
     esp: false,
     no_deposit: false,
     shipping: false,
-    cheapFirst: true,
-    oldFirst: false,
-    getRequest() {
+    cheapFirst: true, 
+    oldFirst: false,  
+    getRequest() {    
       return '?req=123&sdf=555'
     }
   },
@@ -34,7 +34,10 @@ export default new Proxy(
         filter.beach = null
         Collections.updateBeaches(value)
       }
-      Shop.updateOffers()
+      if (prop == 'cheapFirst' && oldValue != value) {
+        Shop.updateOffers()
+      }
+      Shop.updatePotentialCount()
       return true
     }
   }

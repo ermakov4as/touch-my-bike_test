@@ -23,10 +23,14 @@
     <Book></Book>
 
     <div style="background-color: rgb(255, 200, 225);">
-      <h3>Предложения (всего: {{ shop.total_offers }})</h3>
+      <b>Порядок:</b>
+      <button v-if="filter.cheapFirst" @click="filter.cheapFirst=false">Сначала дешевые</button>
+      <button v-if="!filter.cheapFirst" @click="filter.cheapFirst=true">Сначала дорогие</button>
+
       <div v-for="offer of shop.offers" :key="offer.id">
         <OfferCard :offer="offer"></OfferCard>
       </div>
+      
     </div>
 
     <button @click.prevent="shop.getMore()">Показать еще +20</button>

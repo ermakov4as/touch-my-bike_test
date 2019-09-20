@@ -15,6 +15,14 @@ export default {
       this.total_offers = res.count
     })
   },
+  updatePotentialCount() {
+    const reqUrl = '/shop/count' + Filter.getRequest()
+    return axios.empty(reqUrl).then(res => {
+      console.log(res)
+      res = mock.shopOffers().count
+      this.total_offers = res
+    })
+  },
   preview(offer) {
     this.new_order = mock.emptyOrder()
     this.new_order.offer = offer
@@ -35,7 +43,7 @@ export default {
   getMore() {
     this.offers.push(...mock.shopOffers().list)
   },
-  days() { // TODO: делать ли валидацию (чтобы не было -х дней)? // TODO: и ладно здесь, как делать её в Filters?
+  days() {
     if (this.new_order) {
       Filter.date_from = this.new_order.date_from
       Filter.date_to = this.new_order.date_to

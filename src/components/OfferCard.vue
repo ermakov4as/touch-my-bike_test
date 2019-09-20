@@ -36,7 +36,6 @@
     </div>
     <div>Владелец: {{ offer.owner.name }}</div>
     <router-link :to="{name: 'Chat', params: {id: offer.owner.id}}">Написать в чат</router-link>
-    <!-- TODO: статус бронирования - это уже не оффер, а ордер. Это точно надо здесь? Думаю, должно вообще не показываться здесь. -->
     <button @click="shop.preview(offer)">Перейти к бронированию</button>
 
   </div>

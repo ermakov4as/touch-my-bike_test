@@ -77,11 +77,6 @@ export default {
       ntf.error('Сначала прочитайте и примите условия Пользовательского соглашения')
       return
     }
-    if (this.tmp.is_owner === "true") { // TODO: можно ли без костыля?
-      this.tmp.is_owner = true
-    } else if (this.tmp.is_owner === "false") {
-      this.tmp.is_owner = false
-    }
     let token = await axios.empty('/registration')
     console.log(token)
     token = this.email
@@ -91,7 +86,7 @@ export default {
     this.cleanTmpData()
   },
   async loginF() {
-    // TODO: авторизоация через фейсбук
+    // вторизоация через фейсбук
     let token = await axios.empty('/login/facebook')
     console.log(token)
     token = 'THE_TOKEN_WILL_BE_HERE'
@@ -100,7 +95,7 @@ export default {
     router.afterAutorization()
   },
   async loginG() {
-    // TODO: авторизоация через Google
+    // авторизоация через Google
     let token = await axios.empty('/login/google')
     console.log(token)
     token = 'THE_TOKEN_WILL_BE_HERE'

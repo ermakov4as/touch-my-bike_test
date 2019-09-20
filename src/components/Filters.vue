@@ -1,7 +1,4 @@
 <template>
-  <!-- TODO: как на фигме, вопрос: нужна ли возможность полностью скрыть фильтр? -->
-  <!-- TODO: не должно ли быть "сначала дешёвые / дорогие ПЕРЕД "показать ххх байков"? -->
-  <!-- TODO: "Показыть ххх байков" - скрывается ли при скрытии ВСЕГО фильтра? -->
   <div v-if="display.filters" style="background-color: lightgray">
     
     <h3>
@@ -114,12 +111,7 @@
     </template>
 
     <br>
-    <b>Порядок:</b>
-    <button v-if="filter.cheapFirst" @click="filter.cheapFirst=false">Сначала дешевые</button>
-    <button v-if="!filter.cheapFirst" @click="filter.cheapFirst=true">Сначала дорогие</button>
-
-    <br>
-    <button @click="shop.updateOffers()">Обновить предложения</button>
+    <button @click="shop.updateOffers()">Показать предложения ({{ shop.total_offers }})</button>
 
   </div>
 </template>

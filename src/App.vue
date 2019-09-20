@@ -4,7 +4,7 @@
       <div v-for="(role, i) of Object.keys(pages)" :key="i">
         {{role}}:
         <span style="margin-left: 5px;" v-for="(page, j) of pages[role]" :key="j">
-          <router-link v-if="page!=='EditOffer'&&page!=='ShowOffer'" :to="{name: page}">{{page}}</router-link>
+          <router-link v-if="page!=='EditOffer'&&page!=='ShowOffer'&&page!='Chat'" :to="{name: page}">{{page}}</router-link>
           <router-link v-else :to="{name: page, params: {id: 1}}">{{page}}</router-link>
         </span>
       </div>

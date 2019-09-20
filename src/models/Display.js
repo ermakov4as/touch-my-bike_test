@@ -29,8 +29,16 @@ export default {
   set filters(val) {
     this.__filters = val
   },
+  get licenseAgreement() {
+    console.log(this.__licenseAgreement)
+    return this.__licenseAgreement
+  },
+  set licenseAgreement(val) {
+    this.__licenseAgreement = val
+  },
   __login: false,
   __registration: false,
   __burger: false,
-  __filters: true
+  __filters: true,
+  __licenseAgreement: false
 }
