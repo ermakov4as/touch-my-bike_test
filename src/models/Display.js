@@ -30,7 +30,7 @@ export default {
     this.__filters = val
   },
   get licenseAgreement() {
-    console.log(this.__licenseAgreement)
+    // console.log(this.__licenseAgreement)
     return this.__licenseAgreement
   },
   set licenseAgreement(val) {

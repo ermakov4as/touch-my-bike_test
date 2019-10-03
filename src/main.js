@@ -26,6 +26,21 @@ Vue.use(VueGlobalVar, {
     filter: Filter,
     shop: Shop,
     garage: Garage,
+    overlay: {
+      state: false,
+      _callback: null,
+      show(callback) {
+        this._callback = callback
+        this.state = true
+      },
+      hide() {
+        this._callback()
+        this.state = false
+      }
+    },
+    $sm: 318,
+    $md: 768,
+    $xl: 1440,
     $ntf: {
       success: msg => {
         Vue.notify({

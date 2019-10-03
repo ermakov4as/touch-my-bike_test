@@ -380,11 +380,11 @@ shop:
     - total_price:        Number
 ##################################### actions
 garage:
-  cancel(order):      null
-  commit(order):      null
-shop:
-  changeLike(Offer):  null 
-  cancel(order):      null 
+  cancel(order):          null
+  commit(order):          null
+shop:   
+  changeLike(Offer):      null 
+  cancel(order):          null 
 
 #############################################
 #                                           #

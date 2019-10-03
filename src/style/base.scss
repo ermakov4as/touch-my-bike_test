@@ -1,0 +1,148 @@
+@import 'var';
+@import 'bootstrap/bootstrap';
+
+// ELEMENTS STYLE
+
+body,
+figure {
+  margin: 0px;
+}
+
+.container {
+  padding: 0;
+}
+
+.row {
+  margin: 0px;
+}
+.col {
+  padding: 0px;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+ul {
+  padding-inline-start: 0px;
+}
+ul li {
+  list-style-type: none;
+}
+
+// FONTS
+
+.bold-18 {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.bold-14 {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.reg-14 {
+  font-size: 14px;
+}
+
+.text-u {
+  text-decoration: underline;
+}
+
+p {
+  font-size: 12px;
+  margin: 0px;
+  @media screen and (min-width: $md) {
+    font-size: 14px;
+  }
+}
+
+h2 {
+  font-size: 14px;
+  font-weight: bold;
+  @media screen and (min-width: $md) {
+    font-size: 18px;
+  }
+}
+
+// INPUTS
+
+.input-box {
+  display: flex;
+  align-items: center;
+  background-color: $white;
+  height: $_7;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+}
+
+select {
+  appearance: none;
+  border-radius: 0;
+  border: none;
+  outline: none;
+  height: 100%;
+  padding-left: $_2;
+  background: none;
+  color: $black;
+}
+
+// BUTTONS
+
+.btn-danger,
+.btn-danger:focus,
+.btn-danger:active {
+  height: 42px;
+  box-shadow: 0px 9px 18px rgba(247, 44, 116, 0.47) !important;
+}
+
+.btn-close {
+  background: url('~@/assets/img/btn-close.png') center/cover no-repeat;
+  border: none;
+  border-radius: 30px;
+  &.sm {
+    width: 24px;
+    height: 24px;
+  }
+  &.md {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.btn-short {
+  width: 168px;
+}
+.btn-long {
+  width: 204px;
+}
+
+// GLOBAL CLASSES
+
+.pointer {
+  cursor: pointer;
+}
+
+.placeholder {
+  color: #757575;
+}
+
+.overlay-blur {
+  background: #00000084;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+}
+
+.overlay-box {
+  border-radius: $_2;
+  background: #f8f8f8;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.25);
+  z-index: 11;
+}

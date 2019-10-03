@@ -11,7 +11,7 @@ export default new Proxy(
     date_to: null,
     year_from: null,
     year_to: null,
-    akp: false,
+    akp: null,
     abs: false,
     esp: false,
     no_deposit: false,
@@ -24,6 +24,7 @@ export default new Proxy(
   },
   {
     set(filter, prop, value) {
+      console.log(prop, value)
       const oldValue = filter[prop]
       filter[prop] = value
       if (prop == 'brand' && oldValue != value) {

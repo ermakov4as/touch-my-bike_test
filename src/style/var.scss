@@ -1,0 +1,99 @@
+// USER VARIBLES
+$_1: 6px;
+$_2: 12px;
+$_3: 18px;
+$_4: 24px;
+$_5: 30px;
+$_6: 36px;
+$_7: 42px;
+$_8: 48px;
+$_9: 54px;
+$_10: 60px;
+
+// BOOTSTRAP SETTINGS
+
+// COLORS
+$black: #141414;
+$gray-dark: #757575;
+$gray: #c6c6c6;
+$pink: #f72c74;
+$blue: #3b66ff;
+$yellow: #fff000;
+$white: #ffffff;
+
+// COLOR-TYPES
+$danger: $pink;
+$warning: $yellow;
+$secondary: $gray-dark;
+$primary: $blue;
+
+// SPACES
+$spacer: 6px;
+$spacers: (
+  0: 0,
+  1: (
+    $spacer * 1
+  ),
+  2: (
+    $spacer * 2
+  ),
+  3: (
+    $spacer * 3
+  ),
+  4: (
+    $spacer * 4
+  ),
+  5: (
+    $spacer * 5
+  ),
+  6: (
+    $spacer * 6
+  ),
+  9: (
+    $spacer * 9
+  ),
+  10: (
+    $spacer * 10
+  ),
+  45: (
+    $spacer * 45
+  )
+);
+
+$sm: 318px;
+$md: 768px;
+$xl: 1440px;
+
+// BREAKPOINTS
+$grid-breakpoints: (
+  xs: 0,
+  sm: $sm,
+  md: $md,
+  xl: $xl
+);
+
+// CONTAINER WIDTH
+$container-max-widths: (
+  md: 720px,
+  xl: 1140px
+) !default;
+
+// FONTS
+$font-family-base: 'Roboto', Arial;
+
+// BUTTONS
+$input-btn-focus-width: 0px;
+$btn-font-family: 'Roboto', Arial;
+$btn-font-size: 14px;
+$btn-line-height: 16px;
+$btn-font-weight: 600;
+$btn-border-radius: $_1;
+
+// INPUTS
+
+$input-border-width: 0px;
+
+// MIXINS
+@mixin slow($property) {
+  transition: $property 500ms ease;
+}

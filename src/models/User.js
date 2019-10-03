@@ -2,6 +2,7 @@ import Cookies from 'js-cookie'
 import axios, { BEARER_FIELD } from './axios'
 
 import { mock, ntf } from '@/services'
+import Display from './Display'
 
 import router from '../router'
 
@@ -67,6 +68,7 @@ export default {
     await this.autorization()
     router.afterAutorization()
     this.cleanTmpData()
+    Display.login = false
   },
   async registration() {
     if (!this.email) {
@@ -84,6 +86,7 @@ export default {
     await this.autorization()
     router.afterAutorization()
     this.cleanTmpData()
+    Display.registration = false
   },
   async loginF() {
     // вторизоация через фейсбук

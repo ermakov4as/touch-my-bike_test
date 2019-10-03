@@ -109,7 +109,7 @@ removeImage(img):       null
 #               Order (inner)               #
 #                                           #
 #############################################
-- status:             booked / commited / canceled
+- status:             booked / commited / canceled / waiting
 - date_start:         Date
 - date_end:           Date
 - offer:  

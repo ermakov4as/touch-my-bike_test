@@ -153,7 +153,19 @@ function example() {
       },
       {
         id: 2,
-        url: Vue.faker().image.transport()
+        url: Vue.faker().image.sports()
+      },
+      {
+        id: 3,
+        url: Vue.faker().image.technics()
+      },
+      {
+        id: 4,
+        url: Vue.faker().image.city()
+      },
+      {
+        id: 5,
+        url: Vue.faker().image.nightlife()
       }
     ],
     brand: { id: 1, name: 'BMW' },
@@ -171,7 +183,18 @@ function example() {
     year: 2010 + Math.floor(Math.random() * 10),
     abs: !!(Math.floor(Math.random() * 10) % 2),
     esp: !!(Math.floor(Math.random() * 10) % 2),
-    akp: !!(Math.floor(Math.random() * 10) % 2),
+    akp: [
+      {
+        id: 1,
+        name: 'Механика',
+        value: false
+      },
+      {
+        id: 2,
+        name: 'Автомат',
+        value: true
+      }
+    ][Math.floor(Math.random() * 10) % 2],
     deposit: Math.floor(Math.random() * 10) * 10 + 100,
     color: [
       { 
@@ -185,7 +208,7 @@ function example() {
     ][Math.floor(Math.random() * 10) % 2],
     number: 'WA303X',
     is_active: true,
-    is_favourite: false,
+    is_favorite: false,
     shipping: !!(Math.floor(Math.random() * 10) % 2),
     prices: [
       {
@@ -268,7 +291,7 @@ function newOffer() {
     color: null,
     number: null,
     is_active: false,
-    is_favourite: false,
+    is_favorite: false,
     shipping: false,
     prices: [
       {

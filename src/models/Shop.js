@@ -1,6 +1,8 @@
 import axios from './axios'
 import Filter from './Filter'
 import { mock, ntf } from '@/services'
+import router from '@/router'
+import User from './User'
 
 export default {
   offers: [],
@@ -24,17 +26,20 @@ export default {
     })
   },
   preview(offer) {
-    this.new_order = mock.emptyOrder()
+    /* this.new_order = mock.emptyOrder()
     this.new_order.offer = offer
-    if (Filter.date_from) this.new_order.date_from = Filter.date_from
+    if (Filter.date_from) this.new_order.date_from = Filter.date_from // TODO:
     if (Filter.date_to) this.new_order.date_to = Filter.date_to
     this.new_order.need_shipping = Filter.shipping
+    console.log(this.new_order) */
+    if (User.role !== 'unreg') router.push({name: 'Offers', params: {id: offer.id}})
+    else ntf.error('Бронирование доступно только авторизированным пользователям')   
   },
   like(offer) {
-    const reqUrl = '/change_favourite'
+    const reqUrl = '/change_favorite'
     return axios.empty(reqUrl).then(res => {
       console.log(res)
-      offer.is_favourite = !offer.is_favourite
+      offer.is_favorite = !offer.is_favorite
     })
   },
   closePreview() {
@@ -43,17 +48,12 @@ export default {
   getMore() {
     this.offers.push(...mock.shopOffers().list)
   },
-  days() {
-    if (this.new_order) {
+  days() { // TODO: fix to new data type
+    if (this.new_order && this.new_order.date_from && this.new_order.date_to) { // TODO: останется ли нужным?
       Filter.date_from = this.new_order.date_from
       Filter.date_to = this.new_order.date_to
     }
-    if (!checkDays(Filter.date_from, Filter.date_to)) {
-      ntf.error('Дата окончания аренды не может быть раньше даты её начала')
-      Filter.date_to = null
-      this.new_order.date_to = null
-    }
-    return Math.round((Filter.date_to - Filter.date_from) / (24 * 60 * 60 * 1000))
+    return Math.round((Filter.date_to.value - Filter.date_from.value) / (24 * 60 * 60 * 1000) + 1)
   },
   pricePerDay() {
     let _days = this.days()
@@ -65,8 +65,16 @@ export default {
       this.new_order.date_to = null
     } else return _price
   },
-  totalPrice() {
-    return (this.days() * this.pricePerDay())
+  totalPrice(offer) {
+    if (offer) {
+      let _days
+      let _price
+      if (Filter.date_from && Filter.date_to) {
+        _days = this.days()
+        _price = searchPrice(offer.prices, _days)
+        return (_days * _price)
+      } else return ( 1 * offer.prices[offer.prices.length - 1].price)
+    } else return (this.days() * this.pricePerDay())
   },
   book() {
     console.log('Забронировали бы: ' + JSON.stringify(this.new_order))
@@ -86,9 +94,4 @@ function searchPrice(prices, days) {
     }
   }
   return _actualPrice
-}
-
-function checkDays(date_from, date_to) {
-  if (date_from > date_to) return false
-  else return true
 }
